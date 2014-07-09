@@ -1,4 +1,4 @@
 /**
- * Created by Rasheed on 7/5/14.
+ * Persistence JPA Repositories
  */
 package se.inera.fmu.core.infrastructure.persistence;

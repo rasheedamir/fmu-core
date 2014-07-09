@@ -74,7 +74,7 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
 
     
 ###fmu-core from Command Prompt
-
+  1. mvn spring-boot:run
     
 ###fmu-core on IntelliJ
 

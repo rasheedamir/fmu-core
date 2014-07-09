@@ -1,0 +1,29 @@
+server:
+    port: 9000
+    sessionTimeout: 30
+
+tomcat:
+    accessLogEnabled : false
+    protocolHeader : x-forwarded-proto
+    remoteIpHeader : x-forwarded-for
+    backgroundProcessorDelay : 30
+
+logging:
+    file :
+
+spring:
+    jpa.hibernate.ddl-auto : create-drop
+
+---
+
+spring:
+    profiles: development
+server:
+    port: 9001
+
+---
+
+spring:
+    profiles: production
+server:
+    port: 9002

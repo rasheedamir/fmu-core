@@ -8,7 +8,7 @@ package se.inera.fmu.core.domain.shared;
  * or it could be derived from various aspects of the event such as where, when and what
  * has happened.
  */
-public interface DomainEvent<T> {
+public interface IDomainEvent<T> {
 
     /**
      * @param other The other domain event.
