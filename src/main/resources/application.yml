@@ -9,7 +9,7 @@ tomcat:
     backgroundProcessorDelay : 30
 
 logging:
-    file :
+    file : logs/fmu-core.log
 
 spring:
     jpa.hibernate.ddl-auto : create-drop
