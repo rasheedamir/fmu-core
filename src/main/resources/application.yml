@@ -1,29 +1,61 @@
+# Multi-Profile yaml document: https://github.com/spring-projects/spring-boot/blob/master/spring-boot-docs/src/main/asciidoc/spring-boot-features.adoc#multi-profile-yaml-documents
+
 server:
     port: 9000
     sessionTimeout: 30
 
 tomcat:
-    accessLogEnabled : false
-    protocolHeader : x-forwarded-proto
-    remoteIpHeader : x-forwarded-for
-    backgroundProcessorDelay : 30
+    accessLogEnabled: false
+    protocolHeader: x-forwarded-proto
+    remoteIpHeader: x-forwarded-for
+    backgroundProcessorDelay: 30
 
 logging:
-    file : logs/fmu-core.log
+    file: logs/fmu-core.log
 
 spring:
-    jpa.hibernate.ddl-auto : create-drop
-
+    jpa:
+      database: HSQL
+      show-sql: true
+      generate-ddl : true
+      hibernate:
+        ddl-auto: none
+        naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
 ---
 
 spring:
     profiles: development
+
+    jpa:
+      database: MySQL
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+    datasource:
+      platform: mysql
+      url: jdbc:mysql://localhost/fmu-core
+      username: dbuser
+      password: dbpass
+      driverClassName: com.mysql.jdbc.Driver
+
 server:
     port: 9001
+
+# LIQUIBASE ({sc-spring-boot-autoconfigure}/liquibase/LiquibaseProperties.{sc-ext}[LiquibaseProperties])
+liquibase:
+    change-log : classpath:/db/changelog/db.changelog-master.yaml
+    contexts : # runtime contexts to use
+    default-schema : # default database schema to use
+    liquibase.drop-first : false
+    enabled : true
 
 ---
 
 spring:
     profiles: production
+
+    jpa:
+    database: MySQL
+    datasource-platform : org.hibernate.dialect.MySQL5InnoDBDialect
+
 server:
     port: 9002

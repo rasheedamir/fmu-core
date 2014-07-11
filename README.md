@@ -3,13 +3,32 @@
 ###JIRA Link:
 [inera-certificate.atlassian.net](https://inera-certificate.atlassian.net/browse/FMU)
 
-###Technologies required:
+###Technology Stack:
+
+Tools
+Frameworks
+
 1. Language: _Java_ - Java Development Kit (preferably oracle jdk 1.7 and latest update, current 51, openjdk can cause problems)
 2. IDE: _IntelliJ, or STS, or NetBeans_
 3. Production Database: _MySql_ (preferably the latest version, e.g. 5.6)
 4. Test Database: _hsqldb_
 5. Code Management: _Git_
 6. Dependency Management: _Maven 3.0_
+Database Migration Tool: Liquibase
+Logging Abstraction: SFL4J
+Logging Implementation: logback
+Unit Testing: JUnit 4
+Persistence (Data Access): JPA, Hibernate (One of the most popular JPA implementations.), Spring Data JPA (Makes it easy to easily implement JPA based repositories), Spring ORMs (Core ORM support from the Spring Framework)
+BPM: Activiti
+Build System: Maven
+Mocking: Mockito
+Application Server: _Tomcat_
+Jackson
+Date Time Utility Joda-Time
+Hamcrest - A library of matcher objects (also known as constraints or predicates) allowing assertThat style JUnit assertions.
+Spring Test — integration test support for Spring applications.
+Junit — The de-facto standard for unit testing Java applications.
+Mockito — A Java mocking framework.
     
 ###Code Base
 1. Download and install Git.

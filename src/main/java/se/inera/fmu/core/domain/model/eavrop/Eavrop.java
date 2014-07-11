@@ -3,10 +3,7 @@ package se.inera.fmu.core.domain.model.eavrop;
 import org.apache.commons.lang3.Validate;
 import se.inera.fmu.core.domain.shared.IEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,6 +16,7 @@ public class Eavrop implements IEntity<Eavrop> {
 
     // Auto-generated surrogate key
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false, updatable = false)
     @NotNull
     private Long id;
