@@ -15,7 +15,7 @@ logging:
 
 spring:
     jpa:
-      database: HSQL
+      database: h2
       show-sql: true
       generate-ddl : true
       hibernate:
