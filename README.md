@@ -1,16 +1,16 @@
 ##Project fmu-core
 
 ###JIRA Link:
-[inera-certificate.atlassian.net](https://inera-certificate.atlassian.net/browse/FMU)
+[Inera FMU](https://inera-certificate.atlassian.net/browse/FMU)
 
 ###Technology Stack (Tools & Frameworks):
 
 1. Language: _Java 1.7_
-2. IDE: _IntelliJ, or STS, or NetBeans_
+2. IDE: _IntelliJ (Recommended), STS, or NetBeans_
 3. Production Database: _MySql 5.6.4+_
 4. Test Database: _H2_
 5. Code Management: _Git_
-6. Dependency Management & Build: _Maven 3.0_
+6. Dependency & Build Management: _Maven 3.0_
 7. Database Migration Tool: _Liquibase_
 8. Logging Abstraction: _SFL4J_
 9. Logging Implementation: _logback_
@@ -19,10 +19,10 @@
 12. BPM: _Activiti_
 13. Mocking: _Mockito_
 14. Application Server: _Tomcat_
-15. _Jackson_
-16. Date Time Utility _Joda-Time_
-17. _Hamcrest_ - A library of matcher objects (also known as constraints or predicates) allowing assertThat style JUnit assertions.
-18. _Spring Test_ — integration test support for Spring applications.
+15. Object to JSON Mapping: _Jackson_
+16. Date Time Utility: _Joda-Time_
+17. Assertion Library: _Hamcrest_ - A library of matcher objects (also known as constraints or predicates) allowing assertThat style JUnit assertions.
+18. Integration Test Support: _Spring Test_ — integration test support for Spring applications.
 
 ###Code Base
 1. Download and install Git.
