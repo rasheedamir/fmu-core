@@ -40,9 +40,9 @@ public class DevFmuCoreConfiguration extends FmuCoreConfigurationSupport {
         EmbeddedDatabase dataSource = new EmbeddedDatabaseBuilder()
                                             .setType(EmbeddedDatabaseType.H2)
                                             .setName(propertyResolver.getProperty("databaseName"))
-                                            .addScript("classpath:org/activiti/db/create/activiti.h2.create.engine.sql")
-                                            .addScript("classpath:org/activiti/db/create/activiti.h2.create.history.sql")
-                                            .addScript("classpath:org/activiti/db/create/activiti.h2.create.identity.sql")
+                                            //.addScript("classpath:org/activiti/db/create/activiti.h2.create.engine.sql")
+                                            //.addScript("classpath:org/activiti/db/create/activiti.h2.create.history.sql")
+                                            //.addScript("classpath:org/activiti/db/create/activiti.h2.create.identity.sql")
                                             .build();
         return dataSource;
     }
