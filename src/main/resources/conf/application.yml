@@ -1,0 +1,13 @@
+# Multi-Profile yaml document: https://github.com/spring-projects/spring-boot/blob/master/spring-boot-docs/src/main/asciidoc/spring-boot-features.adoc#multi-profile-yaml-documents
+
+server:
+    sessionTimeout: 30
+
+tomcat:
+    accessLogEnabled: false
+    protocolHeader: x-forwarded-proto
+    remoteIpHeader: x-forwarded-for
+    backgroundProcessorDelay: 30
+
+logging:
+    file: logs/fmu-core.log
