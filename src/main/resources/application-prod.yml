@@ -5,8 +5,8 @@ spring:
     profiles: prod
 
     datasource:
-        #driverClassName: com.mysql.jdbc.Driver
-        dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        # dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        driverClassName: com.mysql.jdbc.Driver
         url: jdbc:mysql://localhost:3306/fmu
         databaseName: fmu
         serverName:

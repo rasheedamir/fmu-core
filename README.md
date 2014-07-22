@@ -23,6 +23,7 @@
 16. Date Time Utility: _Joda-Time_
 17. Assertion Library: _Hamcrest_ - A library of matcher objects (also known as constraints or predicates) allowing assertThat style JUnit assertions.
 18. Integration Test Support: _Spring Test_ — integration test support for Spring applications.
+19. JDBC Connection Pool: _HikariCP_ - [HikariCP](http://brettwooldridge.github.io/HikariCP/) is a high performance JDBC connection pool.
 
 ###Code Base
 1. Download and install Git.

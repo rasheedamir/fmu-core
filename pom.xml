@@ -20,9 +20,10 @@
 
     <properties>
         <java.version>1.7</java.version>
-        <activiti-version>5.15</activiti-version>
-        <cxf-version>2.3.4</cxf-version>
-        <mysql-version>5.1.31</mysql-version>
+        <activiti.version>5.15</activiti.version>
+        <cxf.version>2.3.4</cxf.version>
+        <mysql.version>5.1.31</mysql.version>
+        <HikariCP.version>1.3.8</HikariCP.version>
         <start-class>se.inera.fmu.core.Application</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -64,6 +65,13 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-entitymanager.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate-entitymanager.version}</version>
         </dependency>
 
         <!-- In-Memory Database : HSQLDB -->
@@ -85,8 +93,22 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-version}</version>
+            <version>${mysql.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- A high performance JDBC connection pool -->
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun</groupId>
+                    <artifactId>tools</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Activiti -->
@@ -94,7 +116,7 @@
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
-            <version>${activiti-version}</version>
+            <version>${activiti.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -105,7 +127,7 @@
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring</artifactId>
-            <version>${activiti-version}</version>
+            <version>${activiti.version}</version>
         </dependency>
 
         <!-- Java EE - JSR-330 API to replace @Autowired annotation with @Inject -->

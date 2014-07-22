@@ -1,11 +1,12 @@
 server:
-    port: 8080
+    port: 8000
 
 spring:
     profiles: dev
 
     datasource:
-        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        # dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        dataSourceClassName: org.h2.Driver
         url: jdbc:h2:mem:fmu
         databaseName: fmu
         serverName:
