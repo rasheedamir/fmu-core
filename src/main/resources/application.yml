@@ -24,7 +24,7 @@ spring:
 ---
 
 spring:
-    profiles: development
+    profiles: dev
 
     jpa:
       database: MySQL
@@ -51,7 +51,7 @@ liquibase:
 ---
 
 spring:
-    profiles: production
+    profiles: prod
 
     jpa:
     database: MySQL
