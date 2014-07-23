@@ -58,5 +58,4 @@ public class DatabaseConfiguration implements EnvironmentAware {
         config.addDataSourceProperty("password", propertyResolver.getProperty("password"));
         return new HikariDataSource(config);
     }
-
 }

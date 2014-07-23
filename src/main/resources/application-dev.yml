@@ -12,6 +12,9 @@ spring:
         serverName:
         username:
         password:
+        activiti.create.engine: classpath:org/activiti/db/create/activiti.h2.create.engine.sql
+        activiti.create.history: classpath:org/activiti/db/create/activiti.h2.create.history.sql
+        activiti.create.identity: classpath:org/activiti/db/create/activiti.h2.create.identity.sql
 
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect

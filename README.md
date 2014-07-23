@@ -11,12 +11,12 @@
 4. Test Database: _H2_
 5. Code Management: _Git_
 6. Dependency & Build Management: _Maven 3.0_
-7. Database Migration Tool: _Liquibase_
+7. Database Migration Tool: _Liquibase 3_
 8. Logging Abstraction: _SFL4J_
 9. Logging Implementation: _logback_
 10. Unit Testing: _JUnit 4_ — The de-facto standard for unit testing Java applications.
-11. Persistence (Data Access): _JPA_, _Hibernate_ (One of the most popular JPA implementations.), _Spring Data JPA_ (Makes it easy to easily implement JPA based repositories), _Spring ORMs_ (Core ORM support from the Spring Framework)
-12. BPM: _Activiti_
+11. Persistence (Data Access): _JPA_, _Hibernate 4_ (One of the most popular JPA implementations.), _Spring Data JPA_ (Makes it easy to easily implement JPA based repositories), _Spring ORMs_ (Core ORM support from the Spring Framework)
+12. BPM: _Activiti 5.15_
 13. Mocking: _Mockito_
 14. Application Server: _Tomcat_
 15. Object to JSON Mapping: _Jackson_
@@ -24,6 +24,7 @@
 17. Assertion Library: _Hamcrest_ - A library of matcher objects (also known as constraints or predicates) allowing assertThat style JUnit assertions.
 18. Integration Test Support: _Spring Test_ — integration test support for Spring applications.
 19. JDBC Connection Pool: _HikariCP_ - [HikariCP](http://brettwooldridge.github.io/HikariCP/) is a high performance JDBC connection pool.
+20. Properties file format: _YAML_
 
 ###Code Base
 1. Download and install Git.

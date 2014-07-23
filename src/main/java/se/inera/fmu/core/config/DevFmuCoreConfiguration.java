@@ -28,8 +28,6 @@ public class DevFmuCoreConfiguration extends FmuCoreConfigurationSupport {
         if (log.isDebugEnabled()) {
             log.debug("Configuring Datasource");
         }
-        // Embedded H2 Database
-        // Read Configurations from property file
         if (propertyResolver.getProperty("url") == null && propertyResolver.getProperty("databaseName") == null) {
             log.error("Your database connection pool configuration is incorrect! The application" +
                             " cannot start. Please check your Spring profile, current profiles are: {}",
@@ -40,9 +38,9 @@ public class DevFmuCoreConfiguration extends FmuCoreConfigurationSupport {
         EmbeddedDatabase dataSource = new EmbeddedDatabaseBuilder()
                                             .setType(EmbeddedDatabaseType.H2)
                                             .setName(propertyResolver.getProperty("databaseName"))
-                                            //.addScript("classpath:org/activiti/db/create/activiti.h2.create.engine.sql")
-                                            //.addScript("classpath:org/activiti/db/create/activiti.h2.create.history.sql")
-                                            //.addScript("classpath:org/activiti/db/create/activiti.h2.create.identity.sql")
+                                            .addScript(propertyResolver.getProperty("activiti.create.engine"))
+                                            .addScript(propertyResolver.getProperty("activiti.create.history"))
+                                            .addScript(propertyResolver.getProperty("activiti.create.identity"))
                                             .build();
         return dataSource;
     }

@@ -1,4 +1,4 @@
 /**
- * Created by Rasheed on 7/5/14.
+ * Domain services
  */
 package se.inera.fmu.core.domain.service;
