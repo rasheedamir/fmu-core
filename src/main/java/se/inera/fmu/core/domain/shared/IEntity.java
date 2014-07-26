@@ -5,7 +5,7 @@ package se.inera.fmu.core.domain.shared;
  *
  * An entity, as explained in the DDD book.
  */
-public interface Entity<T> {
+public interface IEntity<T> {
 
     /**
      * Entities compare by identity, not by attributes.

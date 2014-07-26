@@ -1,55 +1,51 @@
 package se.inera.fmu.core.domain.model.eavrop;
 
 import lombok.ToString;
-import org.apache.commons.lang3.Validate;
 import se.inera.fmu.core.domain.shared.ValueObject;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
- * Created by Rasheed on 7/7/14.
- *
- * A key that uniquely identifies a particular Eavrop between Inera & FK Systems.
+ * Created by Rasheed on 7/26/14.
  *
  */
 @ToString
 @Embeddable
-public final class ÄrendeId implements ValueObject<ÄrendeId> {
+public final class EavropId implements ValueObject<EavropId> {
 
     //~ Instance fields ================================================================================================
 
-    @Column(name = "ärende_id", nullable = false, updatable = false)
     @NotNull
-    @Size(max = 24)
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "eavrop_id", updatable = false, nullable = false)
+    private Long id;
 
     //~ Constructors ===================================================================================================
 
-    ÄrendeId() {
-        // Needed by Hibernate
+    public EavropId(Long id) {
+        this.setId(id);
     }
 
-    /**
-     * Constructor.
-     *
-     * @param id Id string.
-     */
-    public ÄrendeId(final String id) {
-        Validate.notNull(id);
+    //~ Property Methods ===============================================================================================
+
+    public Long getId() {
+        return id;
+    }
+
+    private void setId(Long id) {
         this.id = id;
     }
 
-    //~ Other Methods ==================================================================================================
+    //~ Other fields ===================================================================================================
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ÄrendeId other = (ÄrendeId) o;
+        EavropId other = (EavropId) o;
 
         return sameValueAs(other);
     }
@@ -60,8 +56,7 @@ public final class ÄrendeId implements ValueObject<ÄrendeId> {
     }
 
     @Override
-    public boolean sameValueAs(ÄrendeId other) {
+    public boolean sameValueAs(EavropId other) {
         return other != null && this.id.equals(other.id);
     }
-
 }

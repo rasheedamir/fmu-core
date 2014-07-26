@@ -1,9 +1,10 @@
 package se.inera.fmu.core.domain.model.eavrop;
 
+import lombok.ToString;
 import org.apache.commons.lang3.Validate;
 import se.inera.fmu.core.domain.model.patient.Patient;
 import se.inera.fmu.core.domain.shared.BaseEntityAudit;
-import se.inera.fmu.core.domain.shared.Entity;
+import se.inera.fmu.core.domain.shared.IEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -12,11 +13,16 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by Rasheed on 7/7/14.
  */
-@javax.persistence.Entity
+@Entity
 @Table(name = "T_EAVROP")
-public class Eavrop extends BaseEntityAudit implements Entity<Eavrop> {
+@ToString
+public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
 
     //~ Instance fields ================================================================================================
+
+    @NotNull
+    @Embedded
+    private EavropId eavropId;
 
     @NotNull
     @Embedded
@@ -83,19 +89,23 @@ public class Eavrop extends BaseEntityAudit implements Entity<Eavrop> {
         this.utredningType = utredningType;
     }
 
-    public void setÄrendeId(ÄrendeId ärendeId) {
+    private void setÄrendeId(ÄrendeId ärendeId) {
         this.ärendeId = ärendeId;
     }
 
-    public void setPatient(Patient patient) {
+    private void setPatient(Patient patient) {
         this.patient = patient;
     }
 
-    //~ Override Methods ===============================================================================================
+    public EavropId getEavropId() {
+        return eavropId;
+    }
+
+    //~ Other Methods ==================================================================================================
 
     @Override
     public boolean sameIdentityAs(final Eavrop other) {
-        return other != null && ärendeId.sameValueAs(other.ärendeId);
+        return other != null && eavropId.sameValueAs(other.eavropId);
     }
 
     /**
@@ -117,11 +127,6 @@ public class Eavrop extends BaseEntityAudit implements Entity<Eavrop> {
      */
     @Override
     public int hashCode() {
-        return ärendeId.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return ärendeId.toString();
+        return eavropId.hashCode();
     }
 }

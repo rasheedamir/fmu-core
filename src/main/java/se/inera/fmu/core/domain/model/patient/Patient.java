@@ -12,11 +12,15 @@ import java.util.Set;
 /**
  * Created by Rasheed on 7/23/14.
  */
-@javax.persistence.Entity
+@Entity
 @Table(name = "T_PATIENT")
-public class Patient extends BaseEntityAudit implements se.inera.fmu.core.domain.shared.Entity<Patient> {
+public class Patient extends BaseEntityAudit implements IEntity<Patient> {
 
     //~ Instance fields ================================================================================================
+
+    @NotNull
+    @Embedded
+    private PatientId patientId;
 
     @Column(name = "initials", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -45,8 +49,8 @@ public class Patient extends BaseEntityAudit implements se.inera.fmu.core.domain
     @Embedded
     private Address homeAddress;
 
-    @Column(name = "email")
     @Email
+    @Column(name = "email")
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "patient")
@@ -124,11 +128,31 @@ public class Patient extends BaseEntityAudit implements se.inera.fmu.core.domain
         this.eavrops = eavrops;
     }
 
+    public PatientId getPatientId() {
+        return patientId;
+    }
 
     //~ Other Methods ==================================================================================================
 
     @Override
     public boolean sameIdentityAs(final Patient other) {
-        return other != null && getId().equals(other.getId());
+        return other != null && getPatientId().equals(other.getPatientId());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Patient patient = (Patient) o;
+
+        if (!patientId.equals(patient.patientId)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return patientId.hashCode();
     }
 }
