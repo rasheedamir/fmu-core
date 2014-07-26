@@ -1,60 +1,101 @@
 package se.inera.fmu.core.domain.model.eavrop;
 
 import org.apache.commons.lang3.Validate;
-import se.inera.fmu.core.domain.shared.IEntity;
+import se.inera.fmu.core.domain.model.patient.Patient;
+import se.inera.fmu.core.domain.shared.BaseEntityAudit;
+import se.inera.fmu.core.domain.shared.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
  * Created by Rasheed on 7/7/14.
  */
-@Entity
-public class Eavrop implements IEntity<Eavrop> {
+@javax.persistence.Entity
+@Table(name = "T_EAVROP")
+public class Eavrop extends BaseEntityAudit implements Entity<Eavrop> {
 
     //~ Instance fields ================================================================================================
 
-    // Auto-generated surrogate key
-    @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false, updatable = false)
     @NotNull
-    private Long id;
-
     @Embedded
-    private EavropId eavropId;
+    private ÄrendeId ärendeId;
+
+    @Column(name = "utredning_type", nullable = false, updatable = false)
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private UtredningType utredningType;
+
+    @Column(name = "tolk", length = 50)
+    @Max(50)
+    private String tolk;
+
+    @ManyToOne
+    private Patient patient;
 
     //~ Constructors ===================================================================================================
-
-    /**
-     *
-     * @param strEavropId
-     */
-    public Eavrop(final String strEavropId) {
-        Validate.notNull(strEavropId);
-        this.eavropId = new EavropId(strEavropId);
-    }
 
     Eavrop() {
         //Needed by hibernate
     }
 
+    /**
+     *
+     * @param ärendeId
+     */
+    public Eavrop(final String ärendeId, final UtredningType utredningType, final String tolk, final Patient patient) {
+        Validate.notNull(ärendeId);
+        setÄrendeId(new ÄrendeId(ärendeId));
+        setUtredningType(utredningType);
+        setTolk(tolk);
+        setPatient(patient);
+    }
+
     //~ Property Methods ===============================================================================================
 
     /**
-     * The eavrop id is the identity of this entity, and is unique.
+     * The ärendeId is the identity of this entity, and is unique.
      *
-     * @return Eavrop id.
+     * @return ärendeId
      */
-    public EavropId getEavropId() {
-        return eavropId;
+    public ÄrendeId getÄrendeId() {
+        return ärendeId;
+    }
+
+    public UtredningType getUtredningType() {
+        return utredningType;
+    }
+
+    public String getTolk() {
+        return tolk;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    private void setTolk(final String tolk) {
+        this.tolk = tolk;
+    }
+
+    private void setUtredningType(final UtredningType utredningType) {
+        this.utredningType = utredningType;
+    }
+
+    public void setÄrendeId(ÄrendeId ärendeId) {
+        this.ärendeId = ärendeId;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     //~ Override Methods ===============================================================================================
 
     @Override
     public boolean sameIdentityAs(final Eavrop other) {
-        return other != null && eavropId.sameValueAs(other.eavropId);
+        return other != null && ärendeId.sameValueAs(other.ärendeId);
     }
 
     /**
@@ -76,11 +117,11 @@ public class Eavrop implements IEntity<Eavrop> {
      */
     @Override
     public int hashCode() {
-        return eavropId.hashCode();
+        return ärendeId.hashCode();
     }
 
     @Override
     public String toString() {
-        return eavropId.toString();
+        return ärendeId.toString();
     }
 }

@@ -14,7 +14,15 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: eavrop_id
+                  name: ärende_id
                   type: varchar(255)
                   constraints:
                     nullable: false
+              - column:
+                  name: utredning_type
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tolk
+                  type: varchar(50)

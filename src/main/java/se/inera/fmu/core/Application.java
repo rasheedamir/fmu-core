@@ -24,7 +24,7 @@ import java.util.Arrays;
 @EnableAutoConfiguration
 public class Application extends SpringBootServletInitializer {
 
-    private final Logger log = LoggerFactory.getLogger(Application.class);
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Inject
     private Environment env;

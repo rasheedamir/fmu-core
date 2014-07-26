@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import se.inera.fmu.core.application.FmuOrderingService;
 import se.inera.fmu.core.domain.model.eavrop.Eavrop;
-import se.inera.fmu.core.domain.model.eavrop.EavropId;
 import se.inera.fmu.core.domain.model.eavrop.EavropRepository;
+import se.inera.fmu.core.domain.model.eavrop.UtredningType;
+import se.inera.fmu.core.domain.model.eavrop.ÄrendeId;
+import se.inera.fmu.core.domain.model.patient.Patient;
 
 import javax.inject.Inject;
 
@@ -19,17 +21,19 @@ import javax.inject.Inject;
 @Validated
 public class FmuOrderingServiceImpl implements FmuOrderingService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FmuOrderingServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final EavropRepository eavropRepository;
 
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Inject
     public FmuOrderingServiceImpl(final EavropRepository eavropRepository) {
         this.eavropRepository = eavropRepository;
     }
 
     @Override
-    public Eavrop createNewEavrop(String strEavropId) {
-        Eavrop eavrop = new Eavrop(strEavropId);
-        return eavropRepository.save(eavrop);
+    public ÄrendeId createNewEavrop(String strEavropId, UtredningType utredningType, String tolk, Patient patient) {
+        Eavrop eavrop = new Eavrop(strEavropId, utredningType, tolk, patient);
+        eavrop = eavropRepository.save(eavrop);
+        return eavrop.getÄrendeId();
     }
 }

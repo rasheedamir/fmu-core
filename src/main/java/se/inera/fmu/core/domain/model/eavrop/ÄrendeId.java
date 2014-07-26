@@ -1,7 +1,7 @@
 package se.inera.fmu.core.domain.model.eavrop;
 
 import org.apache.commons.lang3.Validate;
-import se.inera.fmu.core.domain.shared.IValueObject;
+import se.inera.fmu.core.domain.shared.ValueObject;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,22 +11,22 @@ import javax.validation.constraints.Size;
 /**
  * Created by Rasheed on 7/7/14.
  *
- * Uniquely identifies a particular Eavrop.
+ * A key that uniquely identifies a particular Eavrop between Inera & FK Systems.
  *
  */
 @Embeddable
-public final class EavropId implements IValueObject<EavropId> {
+public final class ÄrendeId implements ValueObject<ÄrendeId> {
 
     //~ Instance fields ================================================================================================
 
-    @Column(name = "eavrop_id", nullable = false, updatable = false)
+    @Column(name = "ärende_id", nullable = false, updatable = false)
     @NotNull
     @Size(max = 24)
     private String id;
 
     //~ Constructors ===================================================================================================
 
-    EavropId() {
+    ÄrendeId() {
         // Needed by Hibernate
     }
 
@@ -35,7 +35,7 @@ public final class EavropId implements IValueObject<EavropId> {
      *
      * @param id Id string.
      */
-    public EavropId(final String id) {
+    public ÄrendeId(final String id) {
         Validate.notNull(id);
         this.id = id;
     }
@@ -47,7 +47,7 @@ public final class EavropId implements IValueObject<EavropId> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EavropId other = (EavropId) o;
+        ÄrendeId other = (ÄrendeId) o;
 
         return sameValueAs(other);
     }
@@ -58,7 +58,7 @@ public final class EavropId implements IValueObject<EavropId> {
     }
 
     @Override
-    public boolean sameValueAs(EavropId other) {
+    public boolean sameValueAs(ÄrendeId other) {
         return other != null && this.id.equals(other.id);
     }
 

@@ -25,6 +25,9 @@
 18. Integration Test Support: _Spring Test_ — integration test support for Spring applications.
 19. JDBC Connection Pool: _HikariCP_ - [HikariCP](http://brettwooldridge.github.io/HikariCP/) is a high performance JDBC connection pool.
 20. Properties file format: _YAML_
+21. [_lombok_](http://projectlombok.org/)
+22. AOP : _Spring AOP_
+23. 
 
 ###Code Base
 1. Download and install Git.
