@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
  */
 @Embeddable
 @ToString
-public class Address implements ValueObject<Address> {
+public final class Address implements ValueObject<Address> {
 
     //~ Instance fields ================================================================================================
 
@@ -52,10 +52,7 @@ public class Address implements ValueObject<Address> {
      * @param country
      */
     public Address(final String address1, final String postalCode, final String city, final String country) {
-        setAddress1(address1);
-        setPostalCode(postalCode);
-        setCity(city);
-        setCountry(country);
+        new Address(address1, null, postalCode, null, city, country);
     }
 
     /**

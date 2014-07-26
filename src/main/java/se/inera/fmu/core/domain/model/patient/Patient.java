@@ -1,5 +1,6 @@
 package se.inera.fmu.core.domain.model.patient;
 
+import lombok.ToString;
 import org.hibernate.validator.constraints.Email;
 import se.inera.fmu.core.domain.model.eavrop.Eavrop;
 import se.inera.fmu.core.domain.shared.*;
@@ -14,6 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "T_PATIENT")
+@ToString
 public class Patient extends BaseEntityAudit implements IEntity<Patient> {
 
     //~ Instance fields ================================================================================================
@@ -22,28 +24,14 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
     @Embedded
     private PatientId patientId;
 
-    @Column(name = "initials", nullable = false)
-    @Enumerated(EnumType.STRING)
     @NotNull
-    private Initials initials;
+    @Embedded
+    private Name name;
 
     @Column(name = "gender", nullable = false)
     @Enumerated(EnumType.STRING)
     @NotNull
     private Gender gender;
-
-    @NotNull
-    @Size(min = 0, max = 50)
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
-    @Column(name = "middle_name")
-    private String middleName;
-
-    @Size(min = 0, max = 50)
-    @NotNull
-    @Column(name = "last_name")
-    private String lastName;
 
     @NotNull
     @Embedded
@@ -62,53 +50,36 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
         // Needed by Hibernate
     }
 
-    //~ Property Methods ===============================================================================================
-
-    public Initials getInitials() {
-        return initials;
+    public Patient(Name name, Gender gender, Address homeAddress, String email) {
+        this.setName(name);
+        this.setGender(gender);
+        this.setHomeAddress(homeAddress);
+        this.setEmail(email);
     }
 
-    public void setInitials(Initials initials) {
-        this.initials = initials;
+    //~ Property Methods ===============================================================================================
+
+    public Name getName() {
+        return name;
+    }
+
+    private void setName(Name name) {
+        this.name = name;
     }
 
     public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    private void setGender(Gender gender) {
         this.gender = gender;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public Address getHomeAddress() {
         return homeAddress;
     }
 
-    public void setHomeAddress(Address homeAddress) {
+    private void setHomeAddress(Address homeAddress) {
         this.homeAddress = homeAddress;
     }
 
@@ -116,16 +87,12 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
         return email;
     }
 
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         this.email = email;
     }
 
     public Set<Eavrop> getEavrops() {
         return eavrops;
-    }
-
-    public void setEavrops(Set<Eavrop> eavrops) {
-        this.eavrops = eavrops;
     }
 
     public PatientId getPatientId() {

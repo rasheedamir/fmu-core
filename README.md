@@ -114,3 +114,21 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
     
 ###TroubleShooting
   - There may be errors while running the application
+
+###Generating Liquibase ChangeLog
+
+###Running the Application
+
+##As a "main" Java class
+From your IDE, right-click on the "Application" class at the root of your Java package hierarchy, and run it directly. You should also be able to debug it as easily.
+
+The application will be available on http://localhost:8080.
+
+##As a Maven project
+You can launch the Java server with Maven:
+
+mvn spring-boot:run
+
+The application will be available on http://localhost:8080.
+
+If you want more information on using Maven, please go to http://maven.apache.org
