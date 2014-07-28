@@ -21,7 +21,9 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
     //~ Instance fields ================================================================================================
 
     @NotNull
-    @Embedded
+    @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "patient_id", updatable = false, nullable = false)
     private PatientId patientId;
 
     @NotNull

@@ -16,10 +16,6 @@ public final class EavropId implements ValueObject<EavropId> {
 
     //~ Instance fields ================================================================================================
 
-    @NotNull
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "eavrop_id", updatable = false, nullable = false)
     private Long id;
 
     //~ Constructors ===================================================================================================

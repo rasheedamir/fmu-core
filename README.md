@@ -132,3 +132,27 @@ mvn spring-boot:run
 The application will be available on http://localhost:8080.
 
 If you want more information on using Maven, please go to http://maven.apache.org
+
+###Profiles
+
+fmu-core comes with two "profiles":
+
+_"dev"_ for development: it focuses on ease of development and productivity
+_"prod"_ for production: it focuses on performance and scalability
+
+Those profiles come in two different configurations:
+
+1. The Maven profiles are used at build time. For example mvn -Pprod package will package a production application.
+2. The Spring profiles work a run time. Some Spring beans will behave differently, depending on the profile.
+
+Spring profiles are set by Maven, so we have a consistancy between the two methods: of course, you should have a "prod" profile on Maven and Spring at the same time.
+
+##dev
+In default mode, fmu-core will use the "dev" profile
+If you run the application without Maven, launch the "Application" class (you can probably run it easily from your IDE by right-clicking on it).
+
+If you run the application with Maven, run mvn spring-boot:run
+
+##prod
+In production, fmu-core has to run with the "prod" profile
+Use Maven to build the application with the "prod" profile: mvn -Pprod spring-boot:run

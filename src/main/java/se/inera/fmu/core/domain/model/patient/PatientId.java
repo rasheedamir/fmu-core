@@ -16,10 +16,6 @@ public final class PatientId implements ValueObject<PatientId> {
 
     //~ Instance fields ================================================================================================
 
-    @NotNull
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "patient_id", updatable = false, nullable = false)
     private Long id;
 
     //~ Constructors ===================================================================================================

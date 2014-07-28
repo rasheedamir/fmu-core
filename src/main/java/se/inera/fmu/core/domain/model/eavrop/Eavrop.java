@@ -21,7 +21,9 @@ public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
     //~ Instance fields ================================================================================================
 
     @NotNull
-    @Embedded
+    @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "eavrop_id", updatable = false, nullable = false)
     private EavropId eavropId;
 
     @NotNull
