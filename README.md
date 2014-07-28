@@ -1,9 +1,9 @@
 ##Project fmu-core
 
-###JIRA Link:
+##JIRA Link:
 [Inera FMU](https://inera-certificate.atlassian.net/browse/FMU)
 
-###Technology Stack (Tools & Frameworks):
+##Technology Stack (Tools & Frameworks):
 
 1. Language: _Java 1.7_
 2. IDE: _IntelliJ (Recommended), STS, or NetBeans_
@@ -26,8 +26,8 @@
 19. JDBC Connection Pool: _HikariCP_ - [HikariCP](http://brettwooldridge.github.io/HikariCP/) is a high performance JDBC connection pool.
 20. Properties file format: _YAML_
 21. @ToString: [_lombok_](http://projectlombok.org/)
-22. AOP: _Spring AOP_
-23. Profiles Management: _Maven & Spring Profiles_
+22. AOP: _Spring AOP_ Logging, Transactions, 
+23. Profiles: _Maven & Spring Profiles_
 24. 
 
 ###Code Base
@@ -39,12 +39,13 @@
 ###Project Structure
 
     
-###Setting up the Environment:
-- JAVA
+##Setting up the Environment:
 
-- Maven
+###- JAVA
 
-- IntelliJ
+###- Maven
+
+###- IntelliJ
     1. Install an IDE. Here we will assume the usage of IntelliJ. Download [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html). Ultimate version needs to be bought. Install IntelliJ.
     2. Configure Groovy in IntelliJ.
         - At startup after IntelliJ installation, add support for the plugin of Grails.
@@ -58,7 +59,7 @@
         - From IntelliJ itself wth Git integrated, you need to place an xml file here: `.IntelliJIdea12\config\codestyles\Default _1_.xml`, which contains policies for the commiting.
 More info on this topic can be found [here](http://stackoverflow.com/questions/3206843/how-line-ending-conversions-work-with-git-core-autocrlf-between-different-operat)
 
-- Git
+###- Git
     1. Download latest version of git
         - [msgit for windows](https://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git)
         - `sudo apt-get install git-core` - for ubuntu/debian
@@ -66,7 +67,7 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
     3. Open console and check `git --version`. The result should be like `git version 1.9.0.msysgit.0`.
     4. If git installation successful, generate ssh keys and add it to Bitbucket account, follow to the [official guide](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git).
 
-- MySql
+###- MySql
     - Window users:
 
     1. Download latest version of [MySql community server](http://dev.mysql.com/downloads/mysql/)
@@ -78,7 +79,7 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
 
     - Ubuntu/Debian users: `sudo apt-get install mysql-server mysql-client`
 
-###Database Setup
+###- Database Setup
   1. Create a new database named `---`.
   2. MySql Settings:
       - username = `----`,
@@ -91,9 +92,6 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
 
 ###Using Codebase
 
-    
-###fmu-core from Command Prompt
-  1. mvn spring-boot:run
     
 ###fmu-core on IntelliJ
 
@@ -110,17 +108,17 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
        - _Host_: `localhost`
        - _Port_: `5005` - it's default grails debug port
 
-###Logs
+##Logs
   - Application logs can be found here: 
     
-###TroubleShooting
+##TroubleShooting
   - There may be errors while running the application
 
-###Generating Liquibase ChangeLog
+##Generating Liquibase ChangeLog
 
-###Running the Application
+##Running the Application
 
-##Add _'resources'_ directory to classpath in IntelliJ
+###Add _'resources'_ directory to classpath in IntelliJ
 
 1. Click on the Project view or unhide it by clicking on the "1: Project" button on the left border of the window or by pressing Alt + 1
 2. Find your project or sub-module and click on it to highlight it, then press F4, or right click and choose "Open Module Settings"
@@ -131,21 +129,21 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
 
 You can now run your application and it will have the selected path in the classpath.
 
-##As a "main" Java class
+###As a "main" Java class
 From your IDE, right-click on the "Application" class at the root of your Java package hierarchy, and run it directly. You should also be able to debug it as easily.
 
 The application will be available on http://localhost:8080.
 
-##As a Maven project
+###As a Maven project
 You can launch the Java server with Maven:
 
 mvn spring-boot:run
 
-The application will be available on http://localhost:8080.
+The application will be available on http://localhost:8080
 
 If you want more information on using Maven, please go to http://maven.apache.org
 
-###Profiles
+##Profiles
 
 fmu-core comes with two "profiles":
 
@@ -159,12 +157,12 @@ Those profiles come in two different configurations:
 
 Spring profiles are set by Maven, so we have a consistency between the two methods: of course, you should have a "prod" profile on Maven and Spring at the same time.
 
-##dev
+###dev
 In default mode, fmu-core will use the "dev" profile
 If you run the application without Maven, launch the "Application" class (you can probably run it easily from your IDE by right-clicking on it).
 
 If you run the application with Maven, run mvn spring-boot:run
 
-##prod
+###prod
 In production, fmu-core has to run with the "prod" profile
 Use Maven to build the application with the "prod" profile: mvn -Pprod spring-boot:run
