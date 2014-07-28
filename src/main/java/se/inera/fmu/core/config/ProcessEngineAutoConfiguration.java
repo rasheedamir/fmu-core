@@ -35,7 +35,8 @@ import java.util.List;
  * Discovers any processes definitions deployed in the {@literal src/main/resources/processes} folder, and
  * uses the single {@link javax.sql.DataSource} bean discovered in the Spring application context..
  *
- * @author Josh Long & Rasheed Amir
+ * @author Josh Long
+ * @author Rasheed Amir
  */
 @Configuration
 @ConditionalOnClass({ProcessEngine.class, EnableActiviti.class})

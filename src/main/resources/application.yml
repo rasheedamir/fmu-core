@@ -11,3 +11,7 @@ tomcat:
 
 logging:
     file: logs/fmu-core.log
+
+spring:
+    activiti:
+        checkProcessDefinitions: false

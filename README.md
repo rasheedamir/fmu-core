@@ -25,9 +25,10 @@
 18. Integration Test Support: _Spring Test_ — integration test support for Spring applications.
 19. JDBC Connection Pool: _HikariCP_ - [HikariCP](http://brettwooldridge.github.io/HikariCP/) is a high performance JDBC connection pool.
 20. Properties file format: _YAML_
-21. [_lombok_](http://projectlombok.org/)
-22. AOP : _Spring AOP_
-23. 
+21. @ToString: [_lombok_](http://projectlombok.org/)
+22. AOP: _Spring AOP_
+23. Profiles Management: _Maven & Spring Profiles_
+24. 
 
 ###Code Base
 1. Download and install Git.
@@ -119,6 +120,17 @@ More info on this topic can be found [here](http://stackoverflow.com/questions/3
 
 ###Running the Application
 
+##Add _'resources'_ directory to classpath in IntelliJ
+
+1. Click on the Project view or unhide it by clicking on the "1: Project" button on the left border of the window or by pressing Alt + 1
+2. Find your project or sub-module and click on it to highlight it, then press F4, or right click and choose "Open Module Settings"
+3. Click on the dependencies tab
+4. Click the "+" button on the right and select "Jars or directories..."
+5. Find your path and click OK
+6. In the dialog with "Choose Categories of Selected File", choose classes (even if it's properties), press OK and OK again
+
+You can now run your application and it will have the selected path in the classpath.
+
 ##As a "main" Java class
 From your IDE, right-click on the "Application" class at the root of your Java package hierarchy, and run it directly. You should also be able to debug it as easily.
 
@@ -145,7 +157,7 @@ Those profiles come in two different configurations:
 1. The Maven profiles are used at build time. For example mvn -Pprod package will package a production application.
 2. The Spring profiles work a run time. Some Spring beans will behave differently, depending on the profile.
 
-Spring profiles are set by Maven, so we have a consistancy between the two methods: of course, you should have a "prod" profile on Maven and Spring at the same time.
+Spring profiles are set by Maven, so we have a consistency between the two methods: of course, you should have a "prod" profile on Maven and Spring at the same time.
 
 ##dev
 In default mode, fmu-core will use the "dev" profile
