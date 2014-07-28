@@ -46,38 +46,40 @@
 ###- Maven
 
 ###- IntelliJ
-    1. Install an IDE. Here we will assume the usage of IntelliJ. Download [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html). Ultimate version needs to be bought. Install IntelliJ.
-    2. Configure Groovy in IntelliJ.
-        - At startup after IntelliJ installation, add support for the plugin of Grails.
-        - Otherwise, you can later change it from _File -> Settings_. Then choose plugins, and check _Grails_.
-    3. Enable Git in IntelliJ, as mentioned in the step above.
-    4. After that, go to _Project->Settings_, under _Version Control_, click Git. On the right hand panel, you need to give the address to the git executable, named _git.exe_, present in `.../Git/bin/`.
-    5. For the ssh drop down right below the executable field, its preferable to choose "Built In".
-    6. For more information on this issue, refer to [jetbrains website](http://www.jetbrains.com/idea/webhelp/using-git-integration.html).
-    7. For projects being developed on cross-platform operatins systems, windows uses CRLF line endings(a format) and Linux, OS X use LF line ending format. If not taken care of these line endings will be changed from one format to the other, causing in merge conflicts. There are 2 possible solutions:
-        - If using from Git, you need to change the 'core.autocrlf' property in the Git config to 'true'(for Windows) or to 'input' in case of Linux.
-        - From IntelliJ itself wth Git integrated, you need to place an xml file here: `.IntelliJIdea12\config\codestyles\Default _1_.xml`, which contains policies for the commiting.
+1. Install an IDE. Here we will assume the usage of IntelliJ. Download [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html). Ultimate version needs to be bought. Install IntelliJ.
+2. Configure Groovy in IntelliJ.
+    - At startup after IntelliJ installation, add support for the plugin of Grails.
+    - Otherwise, you can later change it from _File -> Settings_. Then choose plugins, and check _Grails_.
+3. Enable Git in IntelliJ, as mentioned in the step above.
+4. After that, go to _Project->Settings_, under _Version Control_, click Git. On the right hand panel, you need to give the address to the git executable, named _git.exe_, present in `.../Git/bin/`.
+5. For the ssh drop down right below the executable field, its preferable to choose "Built In".
+6. For more information on this issue, refer to [jetbrains website](http://www.jetbrains.com/idea/webhelp/using-git-integration.html).
+7. For projects being developed on cross-platform operatins systems, windows uses CRLF line endings(a format) and Linux, OS X use LF line ending format. If not taken care of these line endings will be changed from one format to the other, causing in merge conflicts. There are 2 possible solutions:
+    - If using from Git, you need to change the 'core.autocrlf' property in the Git config to 'true'(for Windows) or to 'input' in case of Linux.
+    - From IntelliJ itself wth Git integrated, you need to place an xml file here: `.IntelliJIdea12\config\codestyles\Default _1_.xml`, which contains policies for the commiting.
+
 More info on this topic can be found [here](http://stackoverflow.com/questions/3206843/how-line-ending-conversions-work-with-git-core-autocrlf-between-different-operat)
 
 ###- Git
-    1. Download latest version of git
-        - [msgit for windows](https://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git)
-        - `sudo apt-get install git-core` - for ubuntu/debian
-    2. Select point 3 _Run git and included unix tools from the windows command prompt_, when needed. _Path_ will be updated during installation.
-    3. Open console and check `git --version`. The result should be like `git version 1.9.0.msysgit.0`.
-    4. If git installation successful, generate ssh keys and add it to Bitbucket account, follow to the [official guide](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git).
+1. Download latest version of git
+    - [msgit for windows](https://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git)
+    - `sudo apt-get install git-core` - for ubuntu/debian
+2. Select point 3 _Run git and included unix tools from the windows command prompt_, when needed. _Path_ will be updated during installation.
+3. Open console and check `git --version`. The result should be like `git version 1.9.0.msysgit.0`.
+4. If git installation successful, generate ssh keys and add it to Bitbucket account, follow to the [official guide](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git).
+
 
 ###- MySql
-    - Window users:
+- Window users:
 
-    1. Download latest version of [MySql community server](http://dev.mysql.com/downloads/mysql/)
-    2. Run `.exe` or `.msi` file and follow the instructions.
-    3. Select _Developer default_.
-    4. Specify password for _root_ user.
+1. Download latest version of [MySql community server](http://dev.mysql.com/downloads/mysql/)
+2. Run `.exe` or `.msi` file and follow the instructions.
+3. Select _Developer default_.
+4. Specify password for _root_ user.
 
-    Follow [this guide](http://www.mysqltutorial.org/install-mysql/), if there is any questions.
+Follow [this guide](http://www.mysqltutorial.org/install-mysql/), if there is any questions.
 
-    - Ubuntu/Debian users: `sudo apt-get install mysql-server mysql-client`
+- Ubuntu/Debian users: `sudo apt-get install mysql-server mysql-client`
 
 ###- Database Setup
   1. Create a new database named `---`.
