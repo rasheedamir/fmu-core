@@ -92,6 +92,8 @@ Follow [this guide](http://www.mysqltutorial.org/install-mysql/), if there is an
   4. Enter the password when prompted `---`
   5. Create database `create database ---` (The output should be "Query OK, 1 row affected")
 
+CREATE DATABASE `fmu` CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 ###Using Codebase
 
     
@@ -118,9 +120,9 @@ Follow [this guide](http://www.mysqltutorial.org/install-mysql/), if there is an
 
 ##Generating Liquibase ChangeLog
 
-##Running the Application
+##Running/Debugging the Application
 
-###Add _'resources'_ directory to classpath in IntelliJ
+###Add _'resources'_ directory to classpath in IntelliJ 13
 
 1. Click on the Project view or unhide it by clicking on the "1: Project" button on the left border of the window or by pressing Alt + 1
 2. Find your project or sub-module and click on it to highlight it, then press F4, or right click and choose "Open Module Settings"
@@ -168,3 +170,13 @@ If you run the application with Maven, run mvn spring-boot:run
 ###prod
 In production, fmu-core has to run with the "prod" profile
 Use Maven to build the application with the "prod" profile: mvn -Pprod spring-boot:run
+
+##Plugins
+
+###EditorConfig
+EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs. Read more [here](http://editorconfig.org/)
+
+mvn resources:resources liquibase:update -P<profile_name>
+Invoking the resources is necessary in order to have the liquibase.properties placeholders filtered. The -P option tells Maven the profile to use and thus the set of values (from the filter properties file) to use for filtering.
+
+mvn resources:resources liquibase:diff -Pprod

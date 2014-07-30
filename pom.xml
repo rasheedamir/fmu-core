@@ -25,11 +25,48 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <!--
+                        Specifies the build profile id, which is used to find out the correct properties file.
+                        This is not actually necessary for this example, but it can be used for other purposes.
+                -->
                 <!-- Spring profile to use -->
                 <spring.profiles.active>dev</spring.profiles.active>
                 <!-- log configuration -->
                 <logback.loglevel>DEBUG</logback.loglevel>
             </properties>
+            <build>
+                <filters>
+                    <!--
+                        Specifies path to the properties file, which contains profile specific
+                        configuration. In this case, the configuration file is searched
+                        from profiles/dev/ directory.
+                    -->
+                    <filter>src/main/resources/application-${spring.profiles.active}.properties</filter>
+                </filters>
+                <resources>
+                    <!--
+                        Placeholders found from files located in the configured resource directories are replaced
+                        with values found from the profile specific configuration files.
+                    -->
+                    <resource>
+                        <filtering>true</filtering>
+                        <directory>src/main/resources</directory>
+                        <!--
+                            You can also include only specific files found from the configured directory or
+                            exclude files. This can be done by uncommenting following sections and adding
+                            the configuration under includes and excludes tags.
+                        -->
+                        <!--
+                        <includes>
+                            <include></include>
+                        </includes>
+                        <excludes>
+                            <exclude></exclude>
+                        </excludes>
+                        -->
+                    </resource>
+                </resources>
+            </build>
         </profile>
         <profile>
             <id>prod</id>
@@ -41,6 +78,37 @@
                 <logback.appender>CONSOLE</logback.appender>
             </properties>
             <build>
+                <filters>
+                    <!--
+                        Specifies path to the properties file, which contains profile specific
+                        configuration. In this case, the configuration file is searched
+                        from profiles/dev/ directory.
+                    -->
+                    <filter>src/main/resources/application-${spring.profiles.active}.properties</filter>
+                </filters>
+                <resources>
+                    <!--
+                        Placeholders found from files located in the configured resource directories are replaced
+                        with values found from the profile specific configuration files.
+                    -->
+                    <resource>
+                        <filtering>true</filtering>
+                        <directory>src/main/resources</directory>
+                        <!--
+                            You can also include only specific files found from the configured directory or
+                            exclude files. This can be done by uncommenting following sections and adding
+                            the configuration under includes and excludes tags.
+                        -->
+                        <!--
+                        <includes>
+                            <include></include>
+                        </includes>
+                        <excludes>
+                            <exclude></exclude>
+                        </excludes>
+                        -->
+                    </resource>
+                </resources>
                 <plugins>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
@@ -286,11 +354,13 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <message>You are running an older version of Maven. fmu-core requires at least Maven 3.0</message>
+                                    <message>You are running an older version of Maven. fmu-core requires
+                                        at least Maven 3.0</message>
                                     <version>[3.0.0,)</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <message>You are running an older version of Java. fmu-core requires at least JDK 1.7</message>
+                                    <message>You are running an older version of Java. fmu-core requires at
+                                        least JDK 1.7</message>
                                     <version>[1.7.0,)</version>
                                 </requireJavaVersion>
                             </rules>
@@ -337,7 +407,58 @@
                 </executions>
             </plugin>
 
-		</plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <propertyFile>target/classes/liquibase.properties</propertyFile>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.liquibase.ext</groupId>
+                        <artifactId>liquibase-hibernate4</artifactId>
+                        <version>${liquibase_hibernate_version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                        <version>${spring.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                        <version>${spring.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                        <version>${spring.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-orm</artifactId>
+                        <version>${spring.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-core</artifactId>
+                        <version>${hibernate.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-entitymanager</artifactId>
+                        <version>${hibernate-entitymanager.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+        </plugins>
 	</build>
 
 </project>
