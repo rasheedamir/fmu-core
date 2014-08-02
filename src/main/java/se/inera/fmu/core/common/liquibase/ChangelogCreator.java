@@ -163,7 +163,6 @@ public class ChangelogCreator {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(out, true, "UTF-8");
         diffToChangeLog.setChangeSetAuthor("System");
-        //CustomXMLChangeLogSerializer customXMLChangeLogSerializer = new CustomXMLChangeLogSerializer();
         XMLChangeLogSerializer xmlChangeLogSerializer = new XMLChangeLogSerializer();
         diffToChangeLog.print(printStream, xmlChangeLogSerializer);
         printStream.close();
