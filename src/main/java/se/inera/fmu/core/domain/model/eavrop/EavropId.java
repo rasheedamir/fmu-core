@@ -5,6 +5,7 @@ import se.inera.fmu.core.domain.shared.ValueObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Created by Rasheed on 7/26/14.
@@ -12,13 +13,19 @@ import javax.validation.constraints.NotNull;
  */
 @ToString
 @Embeddable
-public final class EavropId implements ValueObject<EavropId> {
+public final class EavropId implements ValueObject<EavropId>, Serializable {
 
     //~ Instance fields ================================================================================================
 
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "eavrop_id", updatable = false, nullable = false)
+    protected Long id;
 
     //~ Constructors ===================================================================================================
+
+    EavropId() {
+        // Needed by hibernate
+    }
 
     public EavropId(Long id) {
         this.setId(id);

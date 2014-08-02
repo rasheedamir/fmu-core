@@ -5,6 +5,7 @@ import se.inera.fmu.core.domain.shared.ValueObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Created by Rasheed on 7/26/14.
@@ -12,13 +13,19 @@ import javax.validation.constraints.NotNull;
  */
 @ToString
 @Embeddable
-public final class PatientId implements ValueObject<PatientId> {
+public final class PatientId implements ValueObject<PatientId>, Serializable {
 
     //~ Instance fields ================================================================================================
 
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "patient_id", updatable = false, nullable = false)
+    protected Long id;
 
     //~ Constructors ===================================================================================================
+
+    PatientId() {
+        // Needed by hibernate
+    }
 
     public PatientId(Long id) {
         this.setId(id);

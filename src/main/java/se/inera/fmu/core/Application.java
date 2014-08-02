@@ -4,15 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.EmbeddedDataSourceConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
+import se.inera.fmu.core.common.liquibase.ChangelogCreator;
 import se.inera.fmu.core.config.Constants;
-import se.inera.fmu.core.config.ProcessEngineAutoConfiguration;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -29,6 +28,9 @@ public class Application extends SpringBootServletInitializer {
     @Inject
     private Environment env;
 
+    @Inject
+    private ChangelogCreator changelogCreator;
+
     /**
      * Initializes fmu-core
      * <p/>
@@ -42,6 +44,8 @@ public class Application extends SpringBootServletInitializer {
         } else {
             log.info("Running with Spring profile(s) : {}", Arrays.toString(env.getActiveProfiles()));
         }
+
+        changelogCreator.recreate();
     }
 
     /**

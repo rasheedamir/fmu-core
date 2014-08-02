@@ -43,7 +43,7 @@ import java.util.List;
 @ConditionalOnBean(javax.sql.DataSource.class)
 @AutoConfigureAfter(DataSourceAutoConfiguration.class)
 @ConditionalOnMissingBean(ProcessEngine.class)
-public class ProcessEngineAutoConfiguration {
+public class ProcessEngineConfiguration {
 
     @Configuration
     @EnableActiviti

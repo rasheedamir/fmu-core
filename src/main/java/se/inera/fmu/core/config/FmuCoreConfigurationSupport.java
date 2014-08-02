@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 /**
  * Created by Rasheed on 7/15/14.
  */
-@Configuration
+//@Configuration
 abstract public class FmuCoreConfigurationSupport implements EnvironmentAware {
 
     @Bean

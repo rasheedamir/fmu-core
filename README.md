@@ -92,6 +92,8 @@ Follow [this guide](http://www.mysqltutorial.org/install-mysql/), if there is an
   4. Enter the password when prompted `---`
   5. Create database `create database ---` (The output should be "Query OK, 1 row affected")
 
+DROP DATABASE `fmu`;
+
 CREATE DATABASE `fmu` CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 ###Using Codebase

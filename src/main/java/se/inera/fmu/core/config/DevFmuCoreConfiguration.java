@@ -16,7 +16,7 @@ import java.util.Arrays;
 /**
  * Created by Rasheed on 7/17/14.
  */
-@Configuration
+//@Configuration
 public class DevFmuCoreConfiguration extends FmuCoreConfigurationSupport {
 
     private final Logger log = LoggerFactory.getLogger(DevFmuCoreConfiguration.class);

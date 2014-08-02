@@ -19,12 +19,11 @@ import java.util.Arrays;
 /**
  * Created by Rasheed on 7/22/14.
  */
-//@Configuration
-//@EnableTransactionManagement
-//@EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
+@Configuration
+@EnableTransactionManagement
 public class DatabaseConfiguration implements EnvironmentAware {
 
-    private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private RelaxedPropertyResolver propertyResolver;
 
