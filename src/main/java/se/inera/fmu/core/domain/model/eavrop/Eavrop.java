@@ -20,8 +20,10 @@ public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
 
     //~ Instance fields ================================================================================================
 
-    @EmbeddedId
-    private EavropId eavropId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "eavrop_id", updatable = false, nullable = false)
+    private Long eavropId;
 
     @NotNull
     @Embedded
@@ -97,14 +99,14 @@ public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
     }
 
     public EavropId getEavropId() {
-        return eavropId;
+        return new EavropId(this.eavropId);
     }
 
     //~ Other Methods ==================================================================================================
 
     @Override
     public boolean sameIdentityAs(final Eavrop other) {
-        return other != null && eavropId.sameValueAs(other.eavropId);
+        return other != null && getEavropId().sameValueAs(other.getEavropId());
     }
 
     /**

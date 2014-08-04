@@ -22,7 +22,6 @@ import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.io.FileSystemResourceLoader;
@@ -44,6 +43,7 @@ import java.util.*;
  */
 @Component
 @ConditionalOnClass(Liquibase.class)
+
 public class ChangelogCreator {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());

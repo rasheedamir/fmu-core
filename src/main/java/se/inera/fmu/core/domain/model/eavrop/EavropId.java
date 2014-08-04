@@ -17,8 +17,6 @@ public final class EavropId implements ValueObject<EavropId>, Serializable {
 
     //~ Instance fields ================================================================================================
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "eavrop_id", updatable = false, nullable = false)
     protected Long id;
 
     //~ Constructors ===================================================================================================

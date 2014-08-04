@@ -20,8 +20,10 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
 
     //~ Instance fields ================================================================================================
 
-    @EmbeddedId
-    private PatientId patientId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "patient_id", updatable = false, nullable = false)
+    private Long patientId;
 
     @NotNull
     @Embedded
@@ -95,7 +97,7 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
     }
 
     public PatientId getPatientId() {
-        return patientId;
+        return new PatientId(this.patientId);
     }
 
     //~ Other Methods ==================================================================================================
