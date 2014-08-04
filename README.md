@@ -153,8 +153,8 @@ If you want more information on using Maven, please go to http://maven.apache.or
 
 fmu-core comes with two "profiles":
 
-_"dev"_ for development: it focuses on ease of development and productivity
-_"prod"_ for production: it focuses on performance and scalability
+  - _"dev"_ for development: it focuses on ease of development and productivity
+  - _"prod"_ for production: it focuses on performance and scalability
 
 Those profiles come in two different configurations:
 
