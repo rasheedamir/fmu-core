@@ -60,6 +60,36 @@
 
 More info on this topic can be found [here](http://stackoverflow.com/questions/3206843/how-line-ending-conversions-work-with-git-core-autocrlf-between-different-operat)
 
+###- Eclipse (for Activiti Diagram Only)
+In addition to installing the maven package and the eclipse package, and all their dependencies, you need to install the m2e extension. The best way to do this is using the Eclipse Marketplace, but the marketplace is not installed by default in the Ubuntu package.
+
+#### Install the Eclipse Marketplace
+1. Open Eclipse, go to Help -> Install New Software...
+2. Select All Available Sites in the Work with dropdown menu.
+3. Wait for the list of software to populate; sometimes it takes a very long time.
+4. Expand the General Purpose Tools group, and tick Marketplace Client.
+5. Click Next, and again, accept the terms and conditions and click Finish.
+
+This will install the marketplace. You will need to restart _Eclipse_ for the change to take effect.
+
+#### Install m2e
+1. Open Eclipse, go to Help -> Eclipse Marketplace...
+2. Wait for it to finish loading.
+3. Enter "maven" in the search box and press return.
+4. Click the Install button next to Maven Integration for Eclipse by Eclipse.org (NB: there is a similar item above called "Maven Integration for Eclipse WTP" by Red Hat, Inc; this is not the correct one).
+
+Again, you will need to restart _Eclipse_ for this to take effect.
+
+#### Install Activiti BPMN 2.0 Designer 
+The following installation instructions are verified on Eclipse Juno.
+
+Go to Help -> Install New Software. In the following panel, click on Add button and fill in the following fields:
+
+Name: Activiti BPMN 2.0 designer
+Location: http://activiti.org/designer/update/
+
+Make sure the "Contact all updates sites.." checkbox is checked, because all the necessary plugins will then be downloaded by Eclipse.
+
 ###- Git
 1. Download latest version of git
     - [msgit for windows](https://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git)
@@ -95,6 +125,8 @@ Follow [this guide](http://www.mysqltutorial.org/install-mysql/), if there is an
 DROP DATABASE `fmu`;
 
 CREATE DATABASE `fmu` CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
 
 ###Using Codebase
 
@@ -158,10 +190,10 @@ fmu-core comes with two "profiles":
 
 Those profiles come in two different configurations:
 
-1. The Maven profiles are used at build time. For example mvn -Pprod package will package a production application.
-2. The Spring profiles work a run time. Some Spring beans will behave differently, depending on the profile.
+1. The _Maven_ profiles are used at build time. For example mvn -Pprod package will package a production application.
+2. The _Spring_ profiles work a run time. Some Spring beans will behave differently, depending on the profile.
 
-Spring profiles are set by Maven, so we have a consistency between the two methods: of course, you should have a "prod" profile on Maven and Spring at the same time.
+Spring profiles are set by Maven, so we have a consistency between the two methods: of course, we have a "prod" profile on _Maven_ and _Spring_ at the same time.
 
 ###dev
 In default mode, fmu-core will use the "dev" profile
