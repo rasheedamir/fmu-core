@@ -28,9 +28,6 @@ public class Application extends SpringBootServletInitializer {
     @Inject
     private Environment env;
 
-    @Inject
-    private ChangelogCreator changelogCreator;
-
     /**
      * Initializes fmu-core
      * <p/>
@@ -44,8 +41,6 @@ public class Application extends SpringBootServletInitializer {
         } else {
             log.info("Running with Spring profile(s) : {}", Arrays.toString(env.getActiveProfiles()));
         }
-
-        changelogCreator.recreate();
     }
 
     /**

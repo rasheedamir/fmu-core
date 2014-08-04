@@ -143,7 +143,7 @@ The application will be available on http://localhost:8080.
 ###As a Maven project
 You can launch the Java server with Maven:
 
-mvn spring-boot:run
+mvn spring-boot:run -Pprod
 
 The application will be available on http://localhost:8080
 
@@ -167,7 +167,7 @@ Spring profiles are set by Maven, so we have a consistency between the two metho
 In default mode, fmu-core will use the "dev" profile
 If you run the application without Maven, launch the "Application" class (you can probably run it easily from your IDE by right-clicking on it).
 
-If you run the application with Maven, run mvn spring-boot:run
+If you run the application with Maven, run mvn -Pdev spring-boot:run
 
 ###prod
 In production, fmu-core has to run with the "prod" profile

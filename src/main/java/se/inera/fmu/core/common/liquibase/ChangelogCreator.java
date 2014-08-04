@@ -24,9 +24,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.stereotype.Component;
+import se.inera.fmu.core.config.Constants;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.io.*;
@@ -43,7 +46,7 @@ import java.util.*;
  */
 @Component
 @ConditionalOnClass(Liquibase.class)
-
+@Profile(Constants.SPRING_PROFILE_PRODUCTION)
 public class ChangelogCreator {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -57,6 +60,7 @@ public class ChangelogCreator {
 
     private CompareControl compareControl;
 
+    @PostConstruct
     public void recreate() {
         initCompareControl();
 

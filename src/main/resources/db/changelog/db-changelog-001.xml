@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="System" id="1407148547877-3">
+        <createTable tableName="T_EAVROP">
+            <column autoIncrement="true" name="eavrop_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="T_EAVROPPK"/>
+            </column>
+            <column name="version" type="BIGINT"/>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="tolk" type="VARCHAR(50)"/>
+            <column name="utredning_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ärende_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patient_patient_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="System" id="1407148547877-4">
+        <createTable tableName="T_PATIENT">
+            <column autoIncrement="true" name="patient_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="T_PATIENTPK"/>
+            </column>
+            <column name="version" type="BIGINT"/>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="gender" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_1" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_2" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="initials" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="middle_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
