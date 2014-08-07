@@ -55,7 +55,7 @@ public class ProcessEngineConfiguration {
                 "classpath:/processes/";
 
         public static final String PROCESS_DEFINITIONS_DEFAULT_SUFFIX =
-                "**.bpmn20.xml";
+                "**.bpmn";
 
         private RelaxedPropertyResolver environment;
 

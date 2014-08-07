@@ -3,7 +3,7 @@
 ##JIRA Link:
 [Inera FMU](https://inera-certificate.atlassian.net/browse/FMU)
 
-##Technology Stack (Tools & Frameworks):
+##Technology Stack (Languages, Tools & Frameworks):
 
 1. Language: _Java 1.7_
 2. IDE: _IntelliJ (Recommended), STS, or NetBeans_
@@ -28,7 +28,7 @@
 21. @ToString: [_lombok_](http://projectlombok.org/)
 22. AOP: _Spring AOP_ Logging, Transactions, 
 23. Profiles: _Maven & Spring Profiles_
-24. 
+24. Scripting Language: _Groovy_
 
 ###Code Base
 1. Download and install Git.
@@ -98,7 +98,6 @@ Make sure the "Contact all updates sites.." checkbox is checked, because all the
 3. Open console and check `git --version`. The result should be like `git version 1.9.0.msysgit.0`.
 4. If git installation successful, generate ssh keys and add it to Bitbucket account, follow to the [official guide](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git).
 
-
 ###- MySql
 - Window users:
 
@@ -154,6 +153,8 @@ https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
 
 ##Generating Liquibase ChangeLog
 
+mvn resources:resources liquibase:diff -Pprod
+
 ##Running/Debugging the Application
 
 ###Add _'resources'_ directory to classpath in IntelliJ 13
@@ -176,8 +177,7 @@ The application will be available on http://localhost:8080.
 You can launch the Java server with Maven:
 
 mvn spring-boot:run -Pprod
-
-The application will be available on http://localhost:8080
+The application will be available on http://localhost:9090
 
 If you want more information on using Maven, please go to http://maven.apache.org
 
@@ -212,5 +212,3 @@ EditorConfig helps developers define and maintain consistent coding styles betwe
 
 mvn resources:resources liquibase:update -P<profile_name>
 Invoking the resources is necessary in order to have the liquibase.properties placeholders filtered. The -P option tells Maven the profile to use and thus the set of values (from the filter properties file) to use for filtering.
-
-mvn resources:resources liquibase:diff -Pprod
