@@ -20,11 +20,13 @@ public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
 
     //~ Instance fields ================================================================================================
 
+    // database primary key
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "eavrop_id", updatable = false, nullable = false)
     private Long eavropId;
 
+    // business key!
     @NotNull
     @Embedded
     private ÄrendeId ärendeId;
@@ -51,9 +53,9 @@ public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
      *
      * @param ärendeId
      */
-    public Eavrop(final String ärendeId, final UtredningType utredningType, final String tolk, final Patient patient) {
+    public Eavrop(final ÄrendeId ärendeId, final UtredningType utredningType, final String tolk, final Patient patient) {
         Validate.notNull(ärendeId);
-        setÄrendeId(new ÄrendeId(ärendeId));
+        setÄrendeId(ärendeId);
         setUtredningType(utredningType);
         setTolk(tolk);
         setPatient(patient);
@@ -106,7 +108,7 @@ public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
 
     @Override
     public boolean sameIdentityAs(final Eavrop other) {
-        return other != null && getEavropId().sameValueAs(other.getEavropId());
+        return other != null && this.getÄrendeId().sameValueAs(other.getÄrendeId());
     }
 
     /**
@@ -128,6 +130,6 @@ public class Eavrop extends BaseEntityAudit implements IEntity<Eavrop> {
      */
     @Override
     public int hashCode() {
-        return eavropId.hashCode();
+        return ärendeId.hashCode();
     }
 }

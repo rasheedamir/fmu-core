@@ -1,19 +1,19 @@
 package se.inera.fmu.core.application.util;
 
 import se.inera.fmu.core.domain.model.eavrop.Eavrop;
+import se.inera.fmu.core.domain.model.eavrop.UtredningType;
+import se.inera.fmu.core.domain.model.eavrop.ÄrendeId;
 
 /**
  * Created by Rasheed on 7/8/14.
  */
-public class EavropUtil {
+public final class EavropUtil {
 
-    public static final String strÄrendeId = "12345";
+    public static final ÄrendeId ÄRENDE_ID = new ÄrendeId("112233");
+    public static final UtredningType UTREDNING_TYPE = UtredningType.AFU;
+    public static final String TOLK = "ENGLISH";
 
-    private EavropUtil() {
-
+    public static Eavrop createEavrop() {
+        return new Eavrop(ÄRENDE_ID, UTREDNING_TYPE, TOLK, PatientUtil.createPatient());
     }
-
-    /*public static Eavrop createEavrop() {
-        return new Eavrop(strÄrendeId);
-    }*/
 }

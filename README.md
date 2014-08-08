@@ -33,7 +33,7 @@
 ###Code Base
 1. Download and install Git.
 2. Right the folder which you want to be the home for the codebase, and choose Git Bash.(For integration of IntelliJ with Git, refer to  the section below _Setting Up the Environment->IntelliJ_ point 4 onward)
-3. Paste `git clone git@github.com:rasheedamir/fmu-core.git`
+3. Paste `git clone https://github.com/rasheedamir/fmu-core.git`
 4. Give the password when prompted.
     
 ###Project Structure
@@ -146,7 +146,7 @@ https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
        - _Port_: `5005` - it's default grails debug port
 
 ##Logs
-  - Application logs can be found here: 
+  - Application logs can be found here: fmu-core/logs
     
 ##TroubleShooting
   - There may be errors while running the application

@@ -21,7 +21,7 @@ public final class ÄrendeId implements ValueObject<ÄrendeId> {
 
     //~ Instance fields ================================================================================================
 
-    @Column(name = "ärende_id", nullable = false, updatable = false)
+    @Column(name = "ärende_id", nullable = false, updatable = false, unique = true)
     @NotNull
     @Size(max = 24)
     private String id;

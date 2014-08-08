@@ -20,10 +20,16 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
 
     //~ Instance fields ================================================================================================
 
+    // database primary key
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "patient_id", updatable = false, nullable = false)
     private Long patientId;
+
+    // business key
+    @NotNull
+    @Column(name = "personal_number", updatable = false, nullable = false, unique = true)
+    private String personalNumber;
 
     @NotNull
     @Embedded
@@ -51,7 +57,8 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
         // Needed by Hibernate
     }
 
-    public Patient(Name name, Gender gender, Address homeAddress, String email) {
+    public Patient(String personalNumber, Name name, Gender gender, Address homeAddress, String email) {
+        this.setPersonalNumber(personalNumber);
         this.setName(name);
         this.setGender(gender);
         this.setHomeAddress(homeAddress);
@@ -96,15 +103,19 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
         return eavrops;
     }
 
-    public PatientId getPatientId() {
-        return new PatientId(this.patientId);
+    public String getPersonalNumber() {
+        return personalNumber;
+    }
+
+    private void setPersonalNumber(String personalNumber) {
+        this.personalNumber = personalNumber;
     }
 
     //~ Other Methods ==================================================================================================
 
     @Override
     public boolean sameIdentityAs(final Patient other) {
-        return other != null && getPatientId().equals(other.getPatientId());
+        return other != null && this.getPersonalNumber().equals(other.getPersonalNumber());
     }
 
     @Override
@@ -114,13 +125,13 @@ public class Patient extends BaseEntityAudit implements IEntity<Patient> {
 
         Patient patient = (Patient) o;
 
-        if (!patientId.equals(patient.patientId)) return false;
+        if (!this.getPersonalNumber().equals(patient.getPersonalNumber())) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return patientId.hashCode();
+        return personalNumber.hashCode();
     }
 }
