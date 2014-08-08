@@ -1,7 +1,9 @@
 package se.inera.fmu.core.application;
 
+import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.ActivitiRule;
 import org.activiti.engine.test.Deployment;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,6 +23,8 @@ import se.inera.fmu.core.domain.model.patient.PatientRepository;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by Rasheed on 7/7/14.
@@ -57,9 +61,20 @@ public class FmuOrderingServiceImplTest {
                                                                          PatientUtil.NAME, PatientUtil.GENDER,
                                                                          PatientUtil.HOME_ADDRESS, PatientUtil.EMAIL);
         // verify repository's were called
-        verify(eavropRepository, times(1)).save(savedEavrop);
         verify(patientRepository, times(1)).save(savedPatient);
+        verify(eavropRepository, times(1)).save(savedEavrop);
         assertEquals("Returned ÄrendeId should come from the repository", savedEavrop.getÄrendeId(), ärendeId);
+
+        // verify a business process has been started
+        // check if the process is started
+        ProcessInstance processInstance = activitiRule.getRuntimeService().createProcessInstanceQuery()
+                                        .processInstanceBusinessKey(ärendeId.toString())
+                                        .singleResult();
+        assertNotNull(processInstance);
+
+        // check if the eavrop JPA-entity is available
+        Eavrop eavropFromVariable = (Eavrop) activitiRule.getRuntimeService().getVariable(processInstance.getId(), "eavrop");
+        assertNotNull(eavropFromVariable);
     }
 
     private Eavrop stubRepositoryToReturnEavropOnSave() {
