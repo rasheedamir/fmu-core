@@ -47,7 +47,6 @@ public class FmuOrderingServiceImplTest {
     public void setUp() {
         fmuOrderingService = new FmuOrderingServiceImpl(eavropRepository, patientRepository);
         fmuOrderingService.setRuntimeService(activitiRule.getRuntimeService());
-        fmuOrderingService.setIdentityService(activitiRule.getIdentityService());
         fmuOrderingService.setTaskService(activitiRule.getTaskService());
     }
 

@@ -16,12 +16,8 @@ import javax.validation.Validator;
 @SuppressWarnings("SpringJavaAutowiringInspection")
 public abstract class AbstractServiceImpl {
 
-    @Inject
-    protected Validator validator;
-
     protected RuntimeService runtimeService;
     protected TaskService taskService;
-    protected IdentityService identityService;
 
     @Inject
     public void setRuntimeService(RuntimeService runtimeService) {
@@ -31,11 +27,6 @@ public abstract class AbstractServiceImpl {
     @Inject
     public void setTaskService(TaskService taskService) {
         this.taskService = taskService;
-    }
-
-    @Inject
-    public void setIdentityService(IdentityService identityService) {
-        this.identityService = identityService;
     }
 
     /**

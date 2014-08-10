@@ -212,3 +212,15 @@ EditorConfig helps developers define and maintain consistent coding styles betwe
 
 mvn resources:resources liquibase:update -P<profile_name>
 Invoking the resources is necessary in order to have the liquibase.properties placeholders filtered. The -P option tells Maven the profile to use and thus the set of values (from the filter properties file) to use for filtering.
+
+##Testing
+
+###Unit Tests
+We use the Surefire Maven plugin to run our unit tests. Run following command to run unit tests:
+
+mvn clean test
+
+###Integration Tests
+The Failsafe Maven plugin is used to execute our integration tests. Run following command to run integration tests:
+ 
+mvn clean verify -P integration-test
